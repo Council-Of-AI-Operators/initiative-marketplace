@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Initiative Marketplace</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app">
+        <header class="app-header">
+            <div class="header-content">
+                <h1>Initiative Marketplace</h1>
+                <div id="auth-container">
+                    <button id="authButton" class="new-idea-button linkedin-btn" onclick="triggerLinkedInAuth()">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+                        </svg>
+                        Sign in to Submit
+                    </button>
+                    <div id="userProfile" style="display: none;" class="user-profile">
+                        <span id="userName" class="user-name"></span>
+                        <button class="new-idea-button" onclick="openSubmitModal()">Submit Initiative</button>
+                        <button class="logout-button" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="app-main">
+            <div class="market-controls">
+                <h2>Available Initiatives</h2>
+                <div class="sort-controls">
+                    <select>
+                        <option>Sort by: Exit Price (High to Low)</option>
+                        <option>Sort by: Duration (Shortest First)</option>
+                        <option>Sort by: Revenue Impact</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="initiative-grid">
+                <!-- Initiative Card 1 -->
+                <article class="initiative-card">
+                    <div class="card-header">
+                        <h3>Etumos (Marketing Operations Consulting)</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <p class="description">Founded in 2014 in Seattle, Etumos specializes in helping businesses optimize
+                        their Marketing Technology stack. Pioneers in Marketo and Salesforce operations.</p>
+
+                    <div class="data-grid">
+                        <div class="data-group highlight">
+                            <span class="label">Est. Valuation</span>
+                            <span class="value">$12,000,000 (Est)</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Exit Terms</span>
+                            <span class="value">Acqui-hire / Full Entity</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Golden Handcuffs</span>
+                            <span class="value">24 Months (Exec Team)</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Financial Impact</span>
+                            <span class="value">Lead-to-Revenue ROI</span>
+                        </div>
+                    </div>
+
+                    <div class="ip-section">
+                        <h4>Intellectual Property Included</h4>
+                        <ul>
+                            <li>The Four Pillars of Marketing Operations Framework</li>
+                            <li>Proprietary MarTech Campaign Automations</li>
+                            <li>Established enterprise client book</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-footer">
+                        <a href="https://etumos.com" class="demo-link" target="_blank">etumos.com</a>
+                        <button class="buy-button" onclick="openPurchaseModal('Etumos', 'Contact for Pricing')">Initiate
+                            Acquisition</button>
+                    </div>
+                </article>
+
+                <!-- Initiative Card 2 -->
+                <article class="initiative-card">
+                    <div class="card-header">
+                        <h3>Sentinel: Internal Threat Detection AI</h3>
+                        <span class="status-badge in-negotiation">In Negotiation</span>
+                    </div>
+                    <p class="description">Internal employee behavior monitoring system utilizing edge LLMs to detect
+                        anomalous data exfiltration patterns.</p>
+
+                    <div class="data-grid">
+                        <div class="data-group highlight">
+                            <span class="label">Exit Price</span>
+                            <span class="value">$850,000</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Exit Terms</span>
+                            <span class="value">Acqui-hire (Full Team)</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Golden Handcuffs</span>
+                            <span class="value">18 Months (Entire Team)</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Financial Impact</span>
+                            <span class="value">-15% Risk Premiums</span>
+                        </div>
+                    </div>
+
+                    <div class="ip-section">
+                        <h4>Success Metrics</h4>
+                        <ul>
+                            <li>Validated against 1.2M logs with 99.4% accuracy</li>
+                            <li>Sub-10ms inference latency</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-footer">
+                        <a href="#" class="demo-link" target="_blank">Documentation</a>
+                        <button class="buy-button outline" disabled>Currently locked</button>
+                    </div>
+                </article>
+
+                <!-- Initiative Card 3 -->
+                <article class="initiative-card">
+                    <div class="card-header">
+                        <h3>Unified Auth Service (SSO)</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <p class="description">A drop-in cross-domain Single Sign-On service built for enterprise scale,
+                        fully compliant with SOC2 and GDPR.</p>
+
+                    <div class="data-grid">
+                        <div class="data-group highlight">
+                            <span class="label">Exit Price</span>
+                            <span class="value">$1,200,000</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Exit Terms</span>
+                            <span class="value">Asset Sale + Licensing</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Golden Handcuffs</span>
+                            <span class="value">None (Turnkey)</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Financial Impact</span>
+                            <span class="value">Saves $1.2M/yr tech debt</span>
+                        </div>
+                    </div>
+
+                    <div class="ip-section">
+                        <h4>Success Metrics</h4>
+                        <ul>
+                            <li>Zero downtime over 2 years in staging</li>
+                            <li>Handles 50k requests/second</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-footer">
+                        <a href="https://auth-spec.example.com" class="demo-link" target="_blank">API Specs</a>
+                        <button class="buy-button"
+                            onclick="openPurchaseModal('Unified Auth Service', '$1,200,000')">Initiate
+                            Acquisition</button>
+                    </div>
+                </article>
+
+                <!-- Initiative Card 4 -->
+                <article class="initiative-card">
+                    <div class="card-header">
+                        <h3>Horizon Data Lake</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <p class="description">Pre-configured Terraform infrastructure scripts to deploy a massively
+                        scalable, low-cost data lake on AWS.</p>
+
+                    <div class="data-grid">
+                        <div class="data-group highlight">
+                            <span class="label">Exit Price</span>
+                            <span class="value">$400,000</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Exit Terms</span>
+                            <span class="value">Source Code Transfer</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Golden Handcuffs</span>
+                            <span class="value">3 Months (Consulting)</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Financial Impact</span>
+                            <span class="value">AWS Bill reduction -40%</span>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <button class="buy-button" onclick="openPurchaseModal('Horizon Data Lake', '$400,000')">Initiate
+                            Acquisition</button>
+                    </div>
+                </article>
+
+                <!-- Initiative Card 5 -->
+                <article class="initiative-card">
+                    <div class="card-header">
+                        <h3>Project Nexus: CRM Integration Pipeline</h3>
+                        <span class="status-badge available">Available</span>
+                    </div>
+                    <p class="description">Middleware orchestrator capable of bidirectional syncing between Salesforce,
+                        HubSpot, and custom internal databases.</p>
+
+                    <div class="data-grid">
+                        <div class="data-group highlight">
+                            <span class="label">Exit Price</span>
+                            <span class="value">$650,000</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Exit Terms</span>
+                            <span class="value">Asset Sale</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Golden Handcuffs</span>
+                            <span class="value">12 Months (1 Architect)</span>
+                        </div>
+                        <div class="data-group">
+                            <span class="label">Financial Impact</span>
+                            <span class="value">Unblocks Enterprise Sales</span>
+                        </div>
+                    </div>
+
+                    <div class="ip-section">
+                        <h4>Intellectual Property Included</h4>
+                        <ul>
+                            <li>12 pre-built highly robust connectors</li>
+                            <li>Queueing architecture designs</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-footer">
+                        <a href="https://nexus.example.com" class="demo-link" target="_blank">View Architecture</a>
+                        <button class="buy-button" onclick="openPurchaseModal('Project Nexus', '$650,000')">Initiate
+                            Acquisition</button>
+                    </div>
+                </article>
+            </div>
+        </main>
+    </div>
+
+    <!-- Simple Purchase Modal -->
+    <div id="purchaseModal" class="modal-overlay" style="display: none;">
+        <div class="modal">
+            <h2 id="modalTitle">Initiate Acquisition</h2>
+            <p>You are about to begin the legal process for acquiring <strong id="modalProjectName"></strong>.</p>
+            <div class="price-callout">
+                <span>Proposed Exit Price:</span>
+                <strong id="modalPrice"></strong>
+            </div>
+            <p class="disclaimer">By proceeding, an LOI (Letter of Intent) workflow will be triggered to your legal
+                procurement team.</p>
+            <div class="modal-actions">
+                <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                <button class="buy-button">Generate LOI</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Initiative Submission Modal (Requires Auth) -->
+    <div id="submitModal" class="modal-overlay" style="display: none;">
+        <div class="modal submit-modal">
+            <h2>Submit New Initiative</h2>
+            <form id="initiativeForm" onsubmit="handleSubmission(event)">
+                <div class="form-group">
+                    <label>Initiative Name</label>
+                    <input type="text" required placeholder="e.g. Content Lifecycle Automation">
+                </div>
+                <div class="form-group">
+                    <label>Exit Price ($)</label>
+                    <input type="number" required placeholder="500000">
+                </div>
+                <div class="form-group">
+                    <label>Golden Handcuffs Duration</label>
+                    <input type="text" required placeholder="6 Months (1 Engineer)">
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" onclick="closeSubmitModal()">Cancel</button>
+                    <button type="submit" class="buy-button">Submit for Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Communal Version Tracker Requirement -->
+    <div class="version-badge" id="versionControl">
+        <div class="version-dot"></div>
+        <span>v1.0.6</span><!-- Pulled directly from COMMUNAL_README.md current state -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
